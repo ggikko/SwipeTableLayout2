@@ -35,11 +35,7 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
 
     @Override
     public LeftSideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        parent.setClipChildren(false);
-        parent.setClipToPadding(false);
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.invest_left_row,parent,false);
-        parent.setClipChildren(false);
-        parent.setClipToPadding(false);
 
         return new LeftSideViewHolder(itemView);
     }
@@ -64,8 +60,6 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
             super(itemView);
 
             ButterKnife.bind(this, itemView);
-
-//            recycler_left_inner.setClipChildren(false);
 
             mLeftRecyclerViewInnerAdapter = new LeftRecyclerViewInnerAdapter(loan_id_list, mContext);
             mLeftInnerRecyclerViewLayoutManager = new CustomLinearLayoutManager(mContext);

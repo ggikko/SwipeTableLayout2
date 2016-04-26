@@ -11,4 +11,12 @@
     <color name="black">#000000</color>
     <color name="test">#EEEEEE</color>
     <color name="header">#F6F7F4</color>
+
+    <!-- grade -->
+    <color name="agrade">#032d57</color>
+    <color name="bgrade">#025b9a</color>
+    <color name="cgrade">#006745</color>
+    <color name="dgrade">#dba400</color>
+    <color name="egrade">#c17500</color>
+
 </resources>

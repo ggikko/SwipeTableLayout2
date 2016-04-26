@@ -2,6 +2,7 @@ package ggikko.me.swipetablelayoutversiontwo.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -28,18 +29,9 @@ import ggikko.me.swipetablelayoutversiontwo.helper.ItemTouchHelperViewHolder;
  */
 public class RightRecyclerViewAdapter extends RecyclerView.Adapter<RightRecyclerViewAdapter.RightSideViewHolder> implements ItemTouchHelperAdapter {
 
-    List<String> pf_grade_list = new ArrayList<>();
-    List<String> interest_rate_list = new ArrayList<>();
-    List<String> loan_application_termlist_list = new ArrayList<>();
-    List<String> bad_rate_list = new ArrayList<>();
-    List<String> grade_cb_kcb_list = new ArrayList<>();
-    List<String> grade_cb_nice_list = new ArrayList<>();
-    List<String> dti_list = new ArrayList<>();
-    List<String> loan_application_amount_list = new ArrayList<>();
-    List<String> remain_loan_application_amount_list = new ArrayList<>();
-    List<String> fund_start_time_list = new ArrayList<>();
 
     TextView textView;
+    View view;
 
     LinearLayout right_item;
 
@@ -53,25 +45,7 @@ public class RightRecyclerViewAdapter extends RecyclerView.Adapter<RightRecycler
         this.mContext = context;
     }
 
-    public void setData(List<String> pf_grade_list, List<String> interest_rate_list,
-                        List<String> loan_application_termlist_list, List<String> bad_rate_list,
-                        List<String> grade_cb_kcb_list, List<String> grade_cb_nice_list,
-                        List<String> dti_list, List<String> loan_application_amount_list,
-                        List<String> remain_loan_application_amount_list, List<String> fund_start_time_list) {
-
-        this.pf_grade_list = pf_grade_list;
-        this.interest_rate_list = interest_rate_list;
-        this.loan_application_amount_list = loan_application_amount_list;
-        this.loan_application_termlist_list = loan_application_termlist_list;
-        this.bad_rate_list = bad_rate_list;
-        this.grade_cb_kcb_list = grade_cb_kcb_list;
-        this.grade_cb_nice_list = grade_cb_nice_list;
-        this.dti_list = dti_list;
-        this.remain_loan_application_amount_list = remain_loan_application_amount_list;
-        this.fund_start_time_list = fund_start_time_list;
-
-    }
-
+ 
 
     @Override
     public RightSideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -84,28 +58,87 @@ public class RightRecyclerViewAdapter extends RecyclerView.Adapter<RightRecycler
     @Override
     public void onBindViewHolder(RightSideViewHolder holder, int position) {
 
-        for(int i =1; i<70; i++) {
+        float GESTURE_THRESHOLD_DP = 34.0f;
+        float GESTURE_THRESHOLD_DP2 = 90.0f;
+        final float scale = mContext.getResources().getDisplayMetrics().density;
+        int height = (int) (GESTURE_THRESHOLD_DP * scale + 0.5f);
+        int width = (int) (GESTURE_THRESHOLD_DP2 * scale + 0.5f);
 
-            float GESTURE_THRESHOLD_DP = 35.0f;
-            float GESTURE_THRESHOLD_DP2 = 90.0f;
-            final float scale = mContext.getResources().getDisplayMetrics().density;
-            int px = (int) (GESTURE_THRESHOLD_DP * scale + 0.5f);
-            int px2 = (int) (GESTURE_THRESHOLD_DP2 * scale + 0.5f);
+        float GESTURE_THRESHOLD_DP3 = 1.0f;
+        int height2 = (int) (GESTURE_THRESHOLD_DP3 * scale + 0.5f);
 
-            textView = new TextView(mContext);
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(px2, px);
+        for(int i =1; i<50; i++) {
+
+            if(i ==1){
+                /** 아무것도 없는 header 부분 */
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(width, height2);
+                view = new View(mContext);
+                view.setLayoutParams(layoutParams2);
+                view.setBackgroundResource(R.drawable.bottom_line);
+                right_item.addView(view);
+
+                textView = new TextView(mContext);
+                textView.setLayoutParams(layoutParams);
+                textView.setText("title");
+                textView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.header));
+                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                right_item.addView(textView);
+            }else if(i ==2){
+                /** 등급 부분 */
+
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(width, height2);
+                view = new View(mContext);
+                view.setLayoutParams(layoutParams2);
+                view.setBackgroundResource(R.drawable.bottom_line);
+                right_item.addView(view);
+                textView = new TextView(mContext);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+                layoutParams.setMargins(10,10,10,10);
+                textView.setLayoutParams(layoutParams);
+                textView.setText("B2");
+                textView.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                textView.setBackgroundResource(R.drawable.bgrade_background);
+                right_item.addView(textView);
+            }else if (i ==3){
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(width, height2);
+                view = new View(mContext);
+                view.setLayoutParams(layoutParams2);
+                view.setBackgroundResource(R.drawable.bottom_line);
+                right_item.addView(view);
+
+                textView = new TextView(mContext);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+                textView.setLayoutParams(layoutParams);
+                textView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.header));
+                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                right_item.addView(textView);
+            }else if (i ==4){
+
+            }else{
+                RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(width, height2);
+                view = new View(mContext);
+                view.setLayoutParams(layoutParams2);
+                view.setBackgroundResource(R.drawable.bottom_line);
+                right_item.addView(view);
+
+                textView = new TextView(mContext);
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
+                textView.setLayoutParams(layoutParams);
+                textView.setText("i" + (i - 1) + "," + "p" + position);
+                textView.setTextSize(13);
+                textView.setPadding(0, 0, 0, 0);
+                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                textView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
 
 
-            textView.setLayoutParams(layoutParams);
-            textView.setText("i"+(i-1)+","+"p"+position);
-            textView.setTextSize(13);
-            textView.setPadding(0, 0, 0, 0);
-            textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-            textView.setBackgroundResource(R.drawable.background_border);
+//                textView.setBackgroundResource(R.drawable.background_border);
 
-            ((MainActivity)mContext).setTextviews(textView, position, i);
+                ((MainActivity) mContext).setTextviews(textView, position, i);
 
-            right_item.addView(textView);
+                right_item.addView(textView);
+            }
         }
 
     }

@@ -35,18 +35,6 @@ public class LeftRecyclerViewInnerAdapter extends RecyclerView.Adapter<LeftRecyc
 
     private List<CheckBox> checkboxList = new ArrayList<>();
 
-
-    /** test */
-    private SelectInvestCheckbox selectInvestCheckbox;
-
-    public void setSelectInvestCheckbox(SelectInvestCheckbox selectInvestCheckbox){
-        this.selectInvestCheckbox = selectInvestCheckbox;
-    }
-
-    public interface SelectInvestCheckbox{
-        public void check(View view, CheckBox checkBox, int position);
-    }
-
     @Override
     public LeftSideInnerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         parent.setClipChildren(false);
@@ -74,7 +62,6 @@ public class LeftRecyclerViewInnerAdapter extends RecyclerView.Adapter<LeftRecyc
     @Override
     public int getItemCount() {
         return loan_id_list.size();
-//        return 100;
     }
 
     /** left side viewholder */
@@ -89,8 +76,7 @@ public class LeftRecyclerViewInnerAdapter extends RecyclerView.Adapter<LeftRecyc
 
         @OnClick(R.id.left_checkbox)
         void callCheck(){
-//            Log.e("ggikko", getAdapterPosition() + " : position \n");
-//            ((MainActivity)mContext).getTestData();
+
             if(left_checkbox == checkboxList.get(0)){
                 for(CheckBox checkBox : checkboxList){
                     if(left_checkbox.isChecked()) {
